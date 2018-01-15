@@ -25,21 +25,38 @@ class CallCenter( object ):
     def addCall( self, newCall ):
         self.callList.append( newCall )
         self.queueSize = len( self.callList )
-        print "Adding a call to the list..."
+        print "Adding a call to the queue..."
         print "self.callist", self.callList
         print "queue size", self.queueSize
+        return self
 
-    def removeFirstCall( self ): #this does not delete the instance itself
+    def removeFirstCall( self ): #this deletes the item from the queue, but not the instance of the call itself
         self.callList.pop(0)
         self.queueSize = len( self.callList )
-        print "Deleting the first call from the list..."
+        print "Deleting the first call from the queue..."
         print "queue size", self.queueSize
+        return self
 
     def printNameNumber( self ):
         print "Printing the current list names and numbers..."
         for i in self.callList:
             print i.callerName, i.callerPhnNumber
         print "Queue length:", self.queueSize
+        return self
+
+    def deleteCallByNr( self, nr ):
+        print "Deleting", nr, "from the queue..."
+        for i in range (0, self.queueSize):
+            # print 'i', i
+            if self.callList[i].callerPhnNumber == nr:
+                print "Found", nr, "in the queue, deleting..."
+                self.callList.pop(i)
+                self.queueSize = len( self.callList )
+                self.printNameNumber()
+                return self
+        print nr, "was not found in the queue"
+
+    
 
 
 
@@ -64,20 +81,8 @@ valleyCallCenter.removeFirstCall()
 
 valleyCallCenter.printNameNumber()
 
-# print valleyCallCenter.callList[0].callerName
+valleyCallCenter.deleteCallByNr( "345-452-3452" )
+valleyCallCenter.deleteCallByNr( "245-452-3452" )
 
-
-
-# print valleyCallCenter.callList
-
-# calls[0].displayCalls()
-# print calls[0]
-# del calls[0]
+# del call1 #this would delete the actual instance of a call
 # print call1
-# print calls[0]
-# del call1
-# print call1
-
-# print call1["id"]
-# call1.displayCalls()
-
