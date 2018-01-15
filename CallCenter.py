@@ -25,8 +25,22 @@ class CallCenter( object ):
     def addCall( self, newCall ):
         self.callList.append( newCall )
         self.queueSize = len( self.callList )
-        # print "self.callist", self.callList
-        # print "queue size", self.queueSize
+        print "Adding a call to the list..."
+        print "self.callist", self.callList
+        print "queue size", self.queueSize
+
+    def removeFirstCall( self ): #this does not delete the instance itself
+        self.callList.pop(0)
+        self.queueSize = len( self.callList )
+        print "Deleting the first call from the list..."
+        print "queue size", self.queueSize
+
+    def printNameNumber( self ):
+        print "Printing the current list names and numbers..."
+        for i in self.callList:
+            print i.callerName, i.callerPhnNumber
+        print "Queue length:", self.queueSize
+
 
 
 call1 = Call( "1", "Peter", "123-456-7889", "2:34 pm",  "Wanted to talk to someone" )
@@ -44,6 +58,12 @@ valleyCallCenter.addCall( call1 )
 valleyCallCenter.addCall( call2 )
 valleyCallCenter.addCall( call3 )
 valleyCallCenter.addCall( call4 )
+valleyCallCenter.printNameNumber()
+
+valleyCallCenter.removeFirstCall()
+
+valleyCallCenter.printNameNumber()
+
 # print valleyCallCenter.callList[0].callerName
 
 
