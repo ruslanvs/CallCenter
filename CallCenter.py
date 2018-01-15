@@ -22,6 +22,7 @@ class CallCenter( object ):
         # self.instancelist = [ Call() for i in range(2) ]
         self.callList = callList
         self.queueSize = queueSize
+
     def addCall( self, newCall ):
         self.callList.append( newCall )
         self.queueSize = len( self.callList )
@@ -47,7 +48,6 @@ class CallCenter( object ):
     def deleteCallByNr( self, nr ):
         print "Deleting", nr, "from the queue..."
         for i in range (0, self.queueSize):
-            # print 'i', i
             if self.callList[i].callerPhnNumber == nr:
                 print "Found", nr, "in the queue, deleting..."
                 self.callList.pop(i)
@@ -55,6 +55,7 @@ class CallCenter( object ):
                 self.printNameNumber()
                 return self
         print nr, "was not found in the queue"
+        return self
 
     
 
